@@ -1,7 +1,7 @@
-FROM ubuntu:18.04
+FROM debian
 
-# Install curl
-RUN apt-get update -y && apt-get install -y curl
+ADD 'https://bintray.com/jfrog/jfrog-cli-go/download_file?file_path=1.20.1%2Fjfrog-cli-linux-amd64%2Fjfrog' /jfrog
 
-# Install the JFrog CLI https://www.jfrog.com/confluence/display/CLI/JFrog+CLI
-RUN curl -fL https://getcli.jfrog.io | sh
+RUN chmod +x /jfrog
+
+ENTRYPOINT /jfrog
